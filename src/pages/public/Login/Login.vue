@@ -141,7 +141,7 @@ const submit = async () => {
     if (res.data && res.data.token) {
       token.value = res.data.token
       successMessage.value = 'Login successful! Redirecting...'
-      localStorage.setItem("authToken", `Bearer ${res.data.token}`)
+      localStorage.setItem("authToken",res.data.token)
       localStorage.setItem("name", res.data.user.name)
       localStorage.setItem("email", res.data.user.email)
       localStorage.setItem("role", res.data.user.role)

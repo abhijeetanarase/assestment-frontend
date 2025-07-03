@@ -413,6 +413,8 @@ export default {
           category: categoryParam,
           lowStock: this.filters.lowStock ? "true" : undefined,
           outOfStock: this.filters.outOfStock ? "true" : undefined,
+          medStock: this.filters.medStock ? "true" : undefined,
+          highStock : this.filters.highStock ? "true" : undefined,
           status: this.filters.status || undefined,
         };
         const query = Object.entries(params)
@@ -541,6 +543,7 @@ export default {
         category: [],
         lowStock: false,
         outOfStock: false,
+        medStock : false
       };
       this.currentPage = 1;
       this.fetchProducts(1);

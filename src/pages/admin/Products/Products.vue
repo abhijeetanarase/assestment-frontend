@@ -94,6 +94,13 @@
         </div>
       </div>
 
+      <!-- Yellow Notice -->
+      <div class="mt-8 mb-4">
+        <div class="flex items-center bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-md">
+          <svg class="w-5 h-5 text-yellow-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z"/></svg>
+          <span class="text-sm text-yellow-800 font-medium">To display the product on the user side, the status of the product should be <span class="font-bold">Active</span>.</span>
+        </div>
+      </div>
       <div class="mt-8 flex flex-col">
         <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div
@@ -330,8 +337,6 @@
 </template>
 
 <script>
-import { onMounted } from "vue";
-import { useRouter } from "vue-router";
 import BasicButton from "../../../components/BasicButton.vue";
 import BasicModal from "../../../components/BasicModal.vue";
 import BasicInput from "../../../components/BasicInput.vue";
@@ -504,7 +509,12 @@ export default {
    async confirmStatusUpdate() {
   if (this.statusToUpdate) {
     // Toggle status in UI
-    this.products = this.products.map((p) => {
+  
+
+    try {
+      // ✅ API call before clearing the reference
+      const res = await api.put(`/product/status/${this.statusToUpdate._id}`);
+      this.products = this.products.map((p) => {
       if ((p._id || p.id) === this.statusToUpdate._id) {
         return {
           ...p,
@@ -513,15 +523,11 @@ export default {
       }
       return p;
     });
-
-    try {
-      // ✅ API call before clearing the reference
-      const res = await api.put(`/product/status/${this.statusToUpdate._id}`);
       console.log(res.data);
     } catch (error) {
       console.error(error);
     }
-
+   
     // ✅ Now safe to reset
     this.statusToUpdate = null;
   }

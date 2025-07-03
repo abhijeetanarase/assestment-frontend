@@ -63,6 +63,9 @@
           <div>
             <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
             <div class="relative rounded-md shadow-sm">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <User class="h-5 w-5 text-gray-400" />
+              </div>
               <input
                 id="name"
                 v-model="form.name"
@@ -71,7 +74,6 @@
                 class="block w-full pl-10 pr-3 py-2.5 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                 :class="errors.name ? 'border-red-300' : 'border-gray-300'"
               />
-              <User class="absolute inset-y-0 left-0 pl-3 h-5 w-5 text-gray-400" />
             </div>
             <p v-if="errors.name" class="mt-1 text-sm text-red-600">{{ errors.name }}</p>
           </div>
@@ -80,6 +82,9 @@
           <div>
             <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email address</label>
             <div class="relative rounded-md shadow-sm">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <Mail class="h-5 w-5 text-gray-400" />
+              </div>
               <input
                 id="email"
                 v-model="form.email"
@@ -88,7 +93,6 @@
                 class="block w-full pl-10 pr-3 py-2.5 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                 :class="errors.email ? 'border-red-300' : 'border-gray-300'"
               />
-              <Mail class="absolute inset-y-0 left-0 pl-3 h-5 w-5 text-gray-400" />
             </div>
             <p v-if="errors.email" class="mt-1 text-sm text-red-600">{{ errors.email }}</p>
           </div>
@@ -97,6 +101,9 @@
           <div>
             <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
             <div class="relative rounded-md shadow-sm">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <Lock class="h-5 w-5 text-gray-400" />
+              </div>
               <input
                 id="password"
                 v-model="form.password"
@@ -105,7 +112,6 @@
                 class="block w-full pl-10 pr-10 py-2.5 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                 :class="errors.password ? 'border-red-300' : 'border-gray-300'"
               />
-              <Lock class="absolute inset-y-0 left-0 pl-3 h-5 w-5 text-gray-400" />
               <button
                 type="button"
                 class="absolute inset-y-0 right-0 pr-3 text-gray-400 hover:text-gray-500 focus:outline-none"

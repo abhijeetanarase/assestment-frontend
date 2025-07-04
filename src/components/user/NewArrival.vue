@@ -95,7 +95,7 @@ const hasMore = ref(true);
 const fetchProducts = async (page) => {
   try {
     loading.value = true;
-    const response = await api.get(`/product?page=${page}&category=clothing`);
+    const response = await api.get(`/product?page=${page}&category=Clothing`);
     
     return response.data.products || [];
   } catch (error) {
